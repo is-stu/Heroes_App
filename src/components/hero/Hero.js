@@ -1,13 +1,12 @@
 import { useMemo } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { getHeroById } from '../../selectors/getHeroById';
+import 'animate.css';
 
 export const Hero = () => {
   const { heroId } = useParams();
   const navigate = useNavigate();
-  const hero = useMemo(() => {
-    getHeroById(heroId);
-  }, [heroId]);
+  const hero = useMemo(() => getHeroById(heroId), [heroId]);
   const { alter_ego, characters, superhero, first_appearance, id, publisher } =
     hero;
 
@@ -23,7 +22,7 @@ export const Hero = () => {
     <div className='row mt-5'>
       <div className='col-4'>
         <img
-          className='img-thumbnail'
+          className='img-thumbnail animate__animated animate__fadeInLeft'
           src={`/assets/${id}.jpg`}
           alt={superhero}
         />
